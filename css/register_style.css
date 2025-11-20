@@ -1,0 +1,41 @@
+input {
+  border: 2px solid #ccc;
+  padding: 8px 35px 8px 8px; /* space for icon */
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+input.typing {
+  border-color: #1d4ed8; /* blue while typing */
+}
+
+input.valid {
+  border-color: #1d7a1d; /* green if valid */
+}
+
+input.invalid {
+  border-color: #e63946; /* red if invalid */
+}
+
+.error-message {
+  color: #e63946;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-image: url('eye-icon.svg'); /* your eye icon here */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
