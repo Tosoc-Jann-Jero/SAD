@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports | Community E-Reporting System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+        <h1>Community E-Reporting</h1>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reports.html" class="active">Reports</a></li>
+        <li><a href="submit.html">Submit</a></li>
+        <li><a href="officials.html">Officials</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="report-section">
+      <h2>Community Reports</h2>
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Date Submitted</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>#001</td>
+            <td>Noise Complaint</td>
+            <td>Loud karaoke at night near Zone 5.</td>
+            <td><span class="status pending">Pending</span></td>
+            <td>Nov 3, 2025</td>
+          </tr>
+          <tr>
+            <td>#002</td>
+            <td>Garbage Issue</td>
+            <td>Uncollected waste at Alley 4.</td>
+            <td><span class="status inprogress">In Progress</span></td>
+            <td>Nov 2, 2025</td>
+          </tr>
+          <tr>
+            <td>#003</td>
+            <td>Street Light</td>
+            <td>Broken light at main street corner.</td>
+            <td><span class="status resolved">Resolved</span></td>
+            <td>Nov 1, 2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Community E-Reporting System | Barangay West Rembo, Taguig City
+  </footer>
+
+  <script>
+    let lastScroll = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      const current = window.pageYOffset;
+      if (current > lastScroll) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = current;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Community E-Reporting System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+        <h1>Community E-Reporting</h1>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="submit.html">Submit</a></li>
+        <li><a href="officials.html">Officials</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <h2>About the System</h2>
+      <p>The Community E-Reporting and Monitoring System is designed to help residents of Barangay West Rembo report peace and order concerns easily through an online platform. This system enables transparency, faster communication, and accountability between the barangay officials and the residents.</p>
+      <p>By digitizing the reporting process, the system encourages participation from the community and provides a structured database of issues that can be monitored and analyzed for better local governance.</p>
+      <h3>Objectives</h3>
+      <ul>
+        <li>To simplify the process of reporting community issues.</li>
+        <li>To improve the response time of barangay officials.</li>
+        <li>To maintain records of reports for tracking and evaluation.</li>
+        <li>To foster cooperation between the barangay and residents.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Community E-Reporting System | Barangay West Rembo, Taguig City
+  </footer>
+
+  <script>
+    let lastScroll = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      const current = window.pageYOffset;
+      if (current > lastScroll) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = current;
+    });
+  </script>
+</body>
+</html>
