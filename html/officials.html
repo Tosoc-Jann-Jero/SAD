@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Officials | Community E-Reporting System</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+        <h1>Community E-Reporting</h1>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reports.html">Reports</a></li>
+        <li><a href="submit.html">Submit</a></li>
+        <li><a href="officials.html" class="active">Officials</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="officials-section">
+      <h2>Barangay Officials</h2>
+      <div class="officials-grid">
+        <div class="official-card">
+          <img src="img/official1.jpg" alt="Official">
+          <h3>Hon. Juan Dela Cruz</h3>
+          <p>Barangay Captain</p>
+        </div>
+        <div class="official-card">
+          <img src="img/official2.jpg" alt="Official">
+          <h3>Hon. Maria Santos</h3>
+          <p>Barangay Secretary</p>
+        </div>
+        <div class="official-card">
+          <img src="img/official3.jpg" alt="Official">
+          <h3>Hon. Jose Ramirez</h3>
+          <p>Barangay Treasurer</p>
+        </div>
+        <div class="official-card">
+          <img src="img/official4.jpg" alt="Official">
+          <h3>Hon. Ana Lopez</h3>
+          <p>Kagawad</p>
+        </div>
+        <div class="official-card">
+          <img src="img/official5.jpg" alt="Official">
+          <h3>Hon. Carlo Dizon</h3>
+          <p>Kagawad</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Community E-Reporting System | Barangay West Rembo, Taguig City
+  </footer>
+
+  <script>
+    let lastScroll = 0;
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      const current = window.pageYOffset;
+      if (current > lastScroll) {
+        header.classList.add('hide');
+      } else {
+        header.classList.remove('hide');
+      }
+      lastScroll = current;
+    });
+  </script>
+</body>
+</html>
