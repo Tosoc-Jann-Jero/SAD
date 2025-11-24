@@ -33,11 +33,10 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
             <ul>
                 <li><a href="user_homepage.php" class="active">Home</a></li>
-                <li><a href="../html/reports.html">Reports</a></li>
-                <li><a href="../html/submit.html">Submit</a></li>
-                <li><a href="../html/officials.html">Officials</a></li>
-                <li><a href="../html/about.html">About</a></li>
-                <li><a href="../html/contact.html">Contact</a></li>
+                <li><a href="reports.php">Reports</a></li>
+                <li><a href="officials.php">Officials</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">FAQ</a></li>
 
                 <!-- Profile Dropdown -->
                 <li class="profile-menu">
@@ -79,7 +78,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="hero-text">
                 <h2>Empowering Communities through Digital Reporting</h2>
                 <p>Report incidents, monitor peace and order, and help make Barangay West Rembo a safer place for everyone.</p>
-                <a href="submit.html" class="btn">Submit a Report</a>
+                <a href="reports.php" class="btn">Submit a Report</a>
             </div>
             <div class="hero-img">
                 <img src="../images/community.jpg" alt="Community">

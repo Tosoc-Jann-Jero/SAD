@@ -1,0 +1,74 @@
+/* Captain card (top) */
+.captain-card {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.captain-card img {
+  width: 180px;   /* keep reasonable size */
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007BFF;
+}
+
+.captain-card h3 {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.captain-card p {
+  font-size: 1.1em;
+  color: #555;
+}
+
+/* Kagawads grid */
+.kagawads-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.official-card {
+  width: 200px;           /* slightly bigger than before */
+  text-align: center;
+}
+
+.official-card img {
+  width: 140px;           /* bigger image without overtaking captain */
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #333;
+}
+
+.official-card h3 {
+  margin-top: 12px;
+  font-size: 1.2em;       /* slightly larger font */
+}
+
+.official-card p {
+  font-size: 1.05em;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .kagawads-grid {
+    gap: 25px;
+  }
+  .official-card {
+    width: 140px;
+  }
+  .official-card img {
+    width: 120px;
+    height: 120px;
+  }
+  .official-card h3 {
+    font-size: 1.05em;
+  }
+  .official-card p {
+    font-size: 1em;
+  }
+}

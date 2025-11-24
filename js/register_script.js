@@ -1,79 +1,90 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("registerForm");
+// Reusable validation function
+function validateField(input, errorSpan, validatorFn, errorMessage) {
+    const value = input.value.trim();
 
-  const usernamePattern = /^[a-zA-Z0-9_]{4,20}$/;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (value === "") {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+        errorSpan.textContent = errorMessage;
+        return false;
+    }
 
-  const fields = {
-    fullname: { element: document.getElementById("fullname"), validator: val => val.trim() !== "", message: "Full name is required." },
-    email: { element: document.getElementById("email"), validator: val => emailPattern.test(val), message: "Invalid email." },
-    username: { element: document.getElementById("username"), validator: val => usernamePattern.test(val), message: "4-20 letters, numbers, or underscores." },
-    password: { element: document.getElementById("password"), validator: val => val.length >= 8, message: "At least 8 characters." },
-    confirm_password: { element: document.getElementById("confirm_password"), validator: val => val === document.getElementById("password").value, message: "Passwords do not match." }
-  };
+    if (validatorFn(value)) {
+        input.classList.remove("invalid");
+        input.classList.add("valid");
+        errorSpan.textContent = "";
+        return true;
+    } else {
+        input.classList.remove("valid");
+        input.classList.add("invalid");
+        errorSpan.textContent = errorMessage;
+        return false;
+    }
+}
 
-  Object.keys(fields).forEach(key => {
-    const field = fields[key];
-    const errorEl = document.getElementById(key + "Error");
+// INPUT FIELDS
+const fullname = document.getElementById("fullname");
+const email = document.getElementById("email");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirm_password");
 
-    field.element.addEventListener("input", () => {
-      field.element.classList.add("typing");
+// ERROR SPANS
+const fullnameError = document.getElementById("fullnameError");
+const emailError = document.getElementById("emailError");
+const usernameError = document.getElementById("usernameError");
+const passwordError = document.getElementById("passwordError");
+const confirmPasswordError = document.getElementById("confirmPasswordError");
 
-      let valid = field.validator(field.element.value);
-      if (field.element.value === "") valid = false;
-
-      field.element.classList.remove("valid", "invalid");
-
-      if (field.element.value.length > 0) {
-        if (valid) {
-          field.element.classList.add("valid");
-          errorEl.textContent = "";
-        } else {
-          field.element.classList.add("invalid");
-          errorEl.textContent = field.message;
-        }
-      } else {
-        errorEl.textContent = "";
-      }
-
-      // Special case: confirm password
-      if (key === "password") {
-        const confirm = fields.confirm_password.element;
-        const confirmError = document.getElementById("confirmPasswordError");
-        if (confirm.value.length > 0) {
-          if (confirm.value !== field.element.value) {
-            confirm.classList.add("invalid");
-            confirm.classList.remove("valid");
-            confirmError.textContent = fields.confirm_password.message;
-          } else {
-            confirm.classList.remove("invalid");
-            confirm.classList.add("valid");
-            confirmError.textContent = "";
-          }
-        }
-      }
-    });
-  });
-
-  // Toggle password visibility
-  document.querySelectorAll(".toggle-password").forEach(icon => {
+// PASSWORD TOGGLE
+document.querySelectorAll(".toggle-password").forEach(icon => {
     icon.addEventListener("click", () => {
-      const input = icon.previousElementSibling;
-      input.type = input.type === "password" ? "text" : "password";
+        const input = icon.previousElementSibling;
+        input.type = input.type === "password" ? "text" : "password";
+        icon.classList.toggle("show");
     });
-  });
-
-  // Final check on submit
-  form.addEventListener("submit", e => {
-    let formValid = true;
-    Object.keys(fields).forEach(key => {
-      const field = fields[key];
-      if (!field.validator(field.element.value)) {
-        formValid = false;
-        field.element.classList.add("invalid");
-        document.getElementById(key + "Error").textContent = field.message;
-      }
-    });
-    if (!formValid) e.preventDefault();
-  });
 });
+
+// Field validators
+fullname.addEventListener("input", () => {
+    fullname.classList.add("typing");
+    validateField(fullname, fullnameError, v => v.length >= 3, "Full name is required.");
+});
+
+email.addEventListener("input", () => {
+    email.classList.add("typing");
+    validateField(email, emailError, v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), "Enter a valid email.");
+});
+
+username.addEventListener("input", () => {
+    username.classList.add("typing");
+    validateField(username, usernameError, v => /^[a-zA-Z0-9_]{4,20}$/.test(v), "Invalid username.");
+});
+
+password.addEventListener("input", () => {
+    password.classList.add("typing");
+    validateField(password, passwordError, v => v.length >= 8, "Password must be 8+ characters.");
+});
+
+confirmPassword.addEventListener("input", () => {
+    confirmPassword.classList.add("typing");
+    validateField(confirmPassword, confirmPasswordError, v => v === password.value, "Passwords do not match.");
+});
+
+// FINAL FORM CHECK BEFORE SUBMIT
+document.getElementById("registerForm").addEventListener("submit", function (e) {
+
+    let valid = true;
+
+    if (!validateField(fullname, fullnameError, v => v.length >= 3, "Full name is required.")) valid = false;
+    if (!validateField(email, emailError, v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), "Enter a valid email.")) valid = false;
+    if (!validateField(username, usernameError, v => /^[a-zA-Z0-9_]{4,20}$/.test(v), "Invalid username.")) valid = false;
+    if (!validateField(password, passwordError, v => v.length >= 8, "Password must be 8+ characters.")) valid = false;
+    if (!validateField(confirmPassword, confirmPasswordError, v => v === password.value, "Passwords do not match.")) valid = false;
+
+    if (!valid) {
+        e.preventDefault(); // STOP FORM SUBMIT
+    }
+});
+
+

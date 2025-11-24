@@ -89,11 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <ul>
                 <li><a href="../html/index.html">Home</a></li>
-                <li><a href="../html/reports.html">Reports</a></li>
-                <li><a href="../html/submit.html">Submit</a></li>
-                <li><a href="../html/officials.html">Officials</a></li>
-                <li><a href="../html/about.html">About</a></li>
-                <li><a href="../html/contact.html">Contact</a></li>
+                <li><a href="reports.php">Reports</a></li>
+                <li><a href="officials.php">Officials</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">FAQ</a></li>
                 <li><a href="register.php" class="active">Register</a></li>
             </ul>
         </nav>
@@ -132,6 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <span class="error-message" id="confirmPasswordError"></span>
 
                     <button type="submit" class="btn">Register</button>
+                    <p>Already have an account? <a href="login.php">Login here</a></p>
                 </form>
             </div>
         </section>
